@@ -1,22 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Card from "./Card";
 import styled from "styled-components";
 
-function CardList() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetch("https://swapi.co/api/people")
-      .then(res => {
-        return res.json();
-      })
-      .then(res => {
-        setData(res.results);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
+function CardList({ data }) {
   return (
     <StyledList>
       {data.map(char => {
