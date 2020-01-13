@@ -15,35 +15,35 @@ function Card({ char }) {
   return (
     <StyledCard>
       <LineItem>
-        <span>Name:</span>
+        <Span>Name:</Span>
         {name}
       </LineItem>
       <LineItem>
-        <span>Height:</span>
+        <Span>Height:</Span>
         {height}
       </LineItem>
       <LineItem>
-        <span>Mass:</span>
+        <Span>Mass:</Span>
         {mass}
       </LineItem>
       <LineItem>
-        <span>Hair Color:</span>
+        <Span>Hair Color:</Span>
         {hair_color}
       </LineItem>
       <LineItem>
-        <span>Skin Color:</span>
+        <Span>Skin Color:</Span>
         {skin_color}
       </LineItem>
       <LineItem>
-        <span>Eye Color:</span>
+        <Span>Eye Color:</Span>
         {eye_color}
       </LineItem>
       <LineItem>
-        <span>Birth Year:</span>
+        <Span>Birth Year:</Span>
         {birth_year}
       </LineItem>
       <LineItem>
-        <span>Gender:</span>
+        <Span>Gender:</Span>
         {gender}
       </LineItem>
     </StyledCard>
@@ -65,5 +65,14 @@ const StyledCard = styled.div`
 const LineItem = styled.li`
   display: flex;
   justify-content: space-between;
-  padding-bottom: 10px;
+  padding: 5px 0;
+  border-bottom: 1px solid silver;
+
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
+const Span = styled.span`
+  font-weight: bold;
 `;
