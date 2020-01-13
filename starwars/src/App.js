@@ -24,7 +24,7 @@ const App = () => {
         return res.json();
       })
       .then(res => {
-        // console.log(res);
+        console.log(res);
         if (inputValue === null) {
           setData(res.results);
         } else {
