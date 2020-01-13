@@ -11,19 +11,29 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
   const [data, setData] = useState([]);
+  const [inputValue, setInputValue] = useState(null);
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = () => {
+    console.log("fetchData function fired");
     fetch("https://swapi.co/api/people")
       .then(res => {
         return res.json();
       })
       .then(res => {
         // console.log(res);
-        setData(res.results);
+        if (inputValue === null) {
+          setData(res.results);
+        } else {
+          const list = res.results.filter(char => {
+            const charName = char.name.toLowerCase();
+            return charName.includes(inputValue);
+          });
+          setData(list);
+        }
       })
       .catch(err => {
         console.log(err);
@@ -33,7 +43,13 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
-      <SearchForm data={data} setData={setData} fetchData={fetchData} />
+      <SearchForm
+        data={data}
+        setData={setData}
+        fetchData={fetchData}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+      />
       <CardList data={data} />
     </div>
   );
